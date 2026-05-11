@@ -1,0 +1,92 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sistem SDM API",
+        "description": "Dokumentasi API untuk Sistem SDM",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Server Lokal"
+        }
+    ],
+    "paths": {
+        "/api/pegawai": {
+            "get": {
+                "tags": [
+                    "Pegawai"
+                ],
+                "summary": "Mengambil daftar Pegawai dengan filter, sort, dan paginasi",
+                "description": "Endpoint yang sangat dioptimasi (Cached) untuk melayani pembacaan data (Dosen & Staf).",
+                "operationId": "getPegawaiList",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Kata kunci pencarian bebas (Mencakup Nama, NIP, Status)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "Budi"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Batasan jumlah item per halaman. Maks: 100",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 15
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operasi berhasil",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "nama": {
+                                                        "type": "string",
+                                                        "example": "Budi Santoso"
+                                                    },
+                                                    "nip": {
+                                                        "type": "string",
+                                                        "example": "198001012005011001"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "meta": {
+                                            "description": "Metadata paginasi",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Pegawai",
+            "description": "Pegawai"
+        }
+    ]
+}
