@@ -48,6 +48,8 @@ class DemoAlgoritmaController extends Controller
         ]);
     }
 
+    #[OA\Get(path: "/api/demo/sorting", summary: "Demonstrasi Sorting", tags: ["Algoritma"])]
+    #[OA\Response(response: 200, description: "Berhasil")]
     public function sorting(): JsonResponse
     {
         return $this->respondWithTiming(function () {
@@ -55,6 +57,8 @@ class DemoAlgoritmaController extends Controller
         }, 'Demonstrasi Sorting (Elemen 2)');
     }
 
+    #[OA\Get(path: "/api/demo/searching", summary: "Demonstrasi Searching", tags: ["Algoritma"])]
+    #[OA\Response(response: 200, description: "Berhasil")]
     public function searching(): JsonResponse
     {
         return $this->respondWithTiming(function () {

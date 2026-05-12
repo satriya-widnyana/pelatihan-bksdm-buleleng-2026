@@ -75,6 +75,34 @@
                     }
                 }
             }
+        },
+        "/api/demo/searching": {
+            "get": {
+                "tags": [
+                    "Algoritma"
+                ],
+                "summary": "Demonstrasi Sorting",
+                "operationId": "04e649e9b5379d377372321372222c10",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil"
+                    }
+                }
+            }
+        },
+        "/api/demo/sorting": {
+            "get": {
+                "tags": [
+                    "Algoritma"
+                ],
+                "summary": "Demonstrasi Searching",
+                "operationId": "238685e51cfb40f34d28090b0734205b",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil"
+                    }
+                }
+            }
         }
     },
     "tags": [
@@ -89,6 +117,10 @@
         {
             "name": "Unit Kerja",
             "description": "Unit Kerja"
+        },
+        {
+            "name": "Algoritma",
+            "description": "Algoritma"
         }
     ]
 }
