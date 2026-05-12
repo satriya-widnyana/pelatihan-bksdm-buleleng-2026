@@ -17,7 +17,7 @@ Route::get('/unit-kerja', [UnitKerjaController::class, 'index']);
 
 // Routing Demo Dokumentasi BNSP
 use App\Http\Controllers\Api\PegawaiDocController;
-Route::get('/pegawai-doc/{id}', [PegawaiDocController::class, 'show']);
+Route::get('/pegawai-doc/{id?}', [PegawaiDocController::class, 'show']);
 
 // Routing Demo Algoritma BNSP
 use App\Http\Controllers\Api\DemoAlgoritmaController;
