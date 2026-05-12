@@ -44,7 +44,7 @@ class UnitKerjaService
             // TODO: Di masa mendatang, jika fitur CRUD Unit Kerja ditambahkan oleh tim lain,
             // pastikan untuk menambahkan perintah `Cache::forget('all_unit_kerja')` pada proses Simpan/Update
             // untuk melakukan Invalidasi Cache (Cache Busting).
-            return UnitKerja::orderBy('nama_unit', 'asc')->get();
+            return UnitKerja::query()->orderBy('nama_unit', 'asc')->get();
         });
     }
 }

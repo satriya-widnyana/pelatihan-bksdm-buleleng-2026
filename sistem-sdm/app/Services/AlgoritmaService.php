@@ -36,7 +36,9 @@ class AlgoritmaService
         $n = count($bubbleData);
         for ($i = 0; $i < $n; $i++) {
             for ($j = 0; $j < $n - $i - 1; $j++) {
-                if ($bubbleData[$j]['golongan'] > $bubbleData[$j + 1]['golongan']) {
+                // Memperbaiki peringatan PHPStan: Komparasi string langsung menggunakan '>' di PHP 8+ dapat menghasilkan nilai tidak konsisten.
+                // Menggunakan strcmp() untuk perbandingan string alfabetis yang aman (Aman & Tepat).
+                if (strcmp($bubbleData[$j]['golongan'], $bubbleData[$j + 1]['golongan']) > 0) {
                     $temp = $bubbleData[$j];
                     $bubbleData[$j] = $bubbleData[$j + 1];
                     $bubbleData[$j + 1] = $temp;

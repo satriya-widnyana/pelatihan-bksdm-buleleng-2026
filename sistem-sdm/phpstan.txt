@@ -1,0 +1,29 @@
+﻿ ------ ---------------------------------------------------------------------- 
+  Line   Http\Controllers\Api\DemoAlgoritmaController.php                      
+ ------ ---------------------------------------------------------------------- 
+  51     Attribute class App\Http\Controllers\Api\OA\Get does not exist.       
+         ≡ƒ¬¬  attribute.notFound                                                
+  52     Attribute class App\Http\Controllers\Api\OA\Response does not exist.  
+         ≡ƒ¬¬  attribute.notFound                                                
+  60     Attribute class App\Http\Controllers\Api\OA\Get does not exist.       
+         ≡ƒ¬¬  attribute.notFound                                                
+  61     Attribute class App\Http\Controllers\Api\OA\Response does not exist.  
+         ≡ƒ¬¬  attribute.notFound                                                
+ ------ ---------------------------------------------------------------------- 
+
+ ------ -------------------------------------------------------------------------------------- 
+  Line   Services\AlgoritmaService.php                                                         
+ ------ -------------------------------------------------------------------------------------- 
+  39     Comparison operation ">" between 'III/a'|'III/b' and 'III/b'|'IV/a' is always false.  
+         ≡ƒ¬¬  greater.alwaysFalse                                                               
+ ------ -------------------------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+  Line   Services\UnitKerjaService.php                                        
+ ------ --------------------------------------------------------------------- 
+  47     Call to an undefined static method App\Models\UnitKerja::orderBy().  
+         ≡ƒ¬¬  staticMethod.notFound                                            
+ ------ --------------------------------------------------------------------- 
+
+ [ERROR] Found 6 errors                                                                                                
+
