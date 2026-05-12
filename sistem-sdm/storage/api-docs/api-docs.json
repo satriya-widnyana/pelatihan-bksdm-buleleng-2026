@@ -3,7 +3,7 @@
     "info": {
         "title": "Sistem SDM API",
         "description": "Dokumentasi API untuk Sistem SDM",
-        "version": "1.0.0"
+        "version": "2.0.0"
     },
     "servers": [
         {
@@ -18,66 +18,60 @@
                     "Pegawai"
                 ],
                 "summary": "Mengambil daftar Pegawai dengan filter, sort, dan paginasi",
-                "description": "Endpoint yang sangat dioptimasi (Cached) untuk melayani pembacaan data (Dosen & Staf).",
-                "operationId": "getPegawaiList",
+                "operationId": "47f166386113dfd4eb8c9f0d7f826d59",
                 "parameters": [
                     {
                         "name": "search",
                         "in": "query",
-                        "description": "Kata kunci pencarian bebas (Mencakup Nama, NIP, Status)",
-                        "required": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "Budi"
-                        }
+                        "required": false
                     },
                     {
                         "name": "per_page",
                         "in": "query",
-                        "description": "Batasan jumlah item per halaman. Maks: 100",
-                        "required": false,
-                        "schema": {
-                            "type": "integer",
-                            "default": 15
-                        }
+                        "required": false
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Operasi berhasil",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "properties": {
-                                                    "id": {
-                                                        "type": "integer",
-                                                        "example": 1
-                                                    },
-                                                    "nama": {
-                                                        "type": "string",
-                                                        "example": "Budi Santoso"
-                                                    },
-                                                    "nip": {
-                                                        "type": "string",
-                                                        "example": "198001012005011001"
-                                                    }
-                                                },
-                                                "type": "object"
-                                            }
-                                        },
-                                        "meta": {
-                                            "description": "Metadata paginasi",
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
+                        "description": "Berhasil"
+                    }
+                }
+            }
+        },
+        "/api/pegawai-doc/{id}": {
+            "get": {
+                "tags": [
+                    "Pegawai (Dokumentasi)"
+                ],
+                "summary": "Mengambil data detail pegawai (Demo)",
+                "operationId": "526e8df0dcac78cd61551841aacbeb90",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Berhasil"
+                    },
+                    "404": {
+                        "description": "Tidak Ditemukan"
+                    }
+                }
+            }
+        },
+        "/api/unit-kerja": {
+            "get": {
+                "tags": [
+                    "Unit Kerja"
+                ],
+                "summary": "Mengambil daftar Unit Kerja",
+                "operationId": "a7c13f74775295af0fe10e234bde4c2b",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil mengambil data"
                     }
                 }
             }
@@ -87,6 +81,14 @@
         {
             "name": "Pegawai",
             "description": "Pegawai"
+        },
+        {
+            "name": "Pegawai (Dokumentasi)",
+            "description": "Pegawai (Dokumentasi)"
+        },
+        {
+            "name": "Unit Kerja",
+            "description": "Unit Kerja"
         }
     ]
 }
