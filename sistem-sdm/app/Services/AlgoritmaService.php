@@ -32,6 +32,7 @@ class AlgoritmaService
 
         // 1. Bubble Sort (Hanya mengurutkan golongan ASC)
         // PSEUDOCODE: Loop array N kali, bandingkan elemen bersebelahan, tukar jika salah urutan.
+        $startBubble = microtime(true);
         $bubbleData = $data;
         $n = count($bubbleData);
         for ($i = 0; $i < $n; $i++) {
@@ -45,10 +46,12 @@ class AlgoritmaService
                 }
             }
         }
+        $timeBubble = round((microtime(true) - $startBubble) * 1000, 4);
 
         // 2. Usort (Multi-criteria: Golongan DESC, lalu Nama ASC)
         // MENGAPA: usort PHP mengimplementasikan variasi Quicksort/Mergesort yang sangat optimal,
         // lebih disarankan di dunia nyata daripada menulis sorting array secara manual.
+        $startUsort = microtime(true);
         $usortData = $data;
         usort($usortData, function ($a, $b) {
             // Jika golongan sama, urutkan berdasarkan nama ASC
@@ -58,15 +61,18 @@ class AlgoritmaService
             // Jika golongan beda, urutkan berdasarkan golongan DESC
             return strcmp($b['golongan'], $a['golongan']);
         });
+        $timeUsort = round((microtime(true) - $startUsort) * 1000, 4);
 
         return [
             'bubble_sort' => [
+                'waktu_eksekusi_ms' => $timeBubble,
                 'kompleksitas_waktu' => 'O(N^2)',
                 'kompleksitas_ruang' => 'O(1)',
                 'penjelasan' => 'Inefisien untuk dataset besar karena iterasi bersarang.',
                 'hasil' => $bubbleData
             ],
             'usort_multi_criteria' => [
+                'waktu_eksekusi_ms' => $timeUsort,
                 'kompleksitas_waktu' => 'O(N log N) rata-rata',
                 'kompleksitas_ruang' => 'O(log N)',
                 'penjelasan' => 'Menggunakan fungsi bawaan C dari PHP, sangat cepat dan andal.',
@@ -94,6 +100,7 @@ class AlgoritmaService
         ];
 
         // 1. Linear Search
+        $startLinear = microtime(true);
         $linearResult = null;
         foreach ($data as $item) {
             if ($item['nama'] === $targetNama) {
@@ -101,9 +108,11 @@ class AlgoritmaService
                 break;
             }
         }
+        $timeLinear = round((microtime(true) - $startLinear) * 1000, 4);
 
         // 2. Binary Search
         // MENGAPA: Sangat efisien untuk data terurut, memotong rentang pencarian menjadi separuh di tiap langkah.
+        $startBinary = microtime(true);
         $binaryResult = null;
         $low = 0;
         $high = count($data) - 1;
@@ -120,28 +129,34 @@ class AlgoritmaService
                 $high = $mid - 1;
             }
         }
+        $timeBinary = round((microtime(true) - $startBinary) * 1000, 4);
 
         // 3. Hash Table (Menggunakan Array Asosiatif PHP)
         // MENGAPA: Jika sering mencari berdasarkan field spesifik (seperti 'nama'), merakit Hash Table 
         // memberikan kecepatan lookup instan secara matematis.
+        $startHash = microtime(true);
         $hashTable = [];
         foreach ($data as $item) {
             $hashTable[$item['nama']] = $item;
         }
         $hashResult = $hashTable[$targetNama] ?? null;
+        $timeHash = round((microtime(true) - $startHash) * 1000, 4);
 
         return [
             'linear_search' => [
+                'waktu_eksekusi_ms' => $timeLinear,
                 'kompleksitas_waktu' => 'O(N)',
                 'kompleksitas_ruang' => 'O(1)',
                 'hasil' => $linearResult
             ],
             'binary_search' => [
+                'waktu_eksekusi_ms' => $timeBinary,
                 'kompleksitas_waktu' => 'O(log N)',
                 'kompleksitas_ruang' => 'O(1)',
                 'hasil' => $binaryResult
             ],
             'hash_table_lookup' => [
+                'waktu_eksekusi_ms' => $timeHash,
                 'kompleksitas_waktu' => 'O(1) untuk lookup, O(N) untuk inisiasi awal',
                 'kompleksitas_ruang' => 'O(N) untuk tabel hash ekstra',
                 'hasil' => $hashResult
